@@ -1,80 +1,63 @@
 #include <stdio.h>
 
-int main(){
-    double a, b, c;
+int main() {
+    double A, B, C, A2, B2, C2, temp;
 
-    scanf("%lf %lf %lf", &a, &b, &c);
-    if((a == b) && (b == c)){
-        printf("TRIANGULO ACUTANGULO\nTRIANGULO EQUILATERO\n");
+    // Le input
+    scanf("%lf %lf %lf", &A, &B, &C);
+
+    // Ordena os lados em ordem decrescente
+    if (B > A)
+    {
+        temp = A;
+        A = B;
+        B = temp;
     }
-    else if ((a > b) && (a > c)){
-        if (a >= b + c){
-            printf("NAO FORMA TRIANGULO\n");
-        }
-        else if(a*a == b*b + c*c){
-            printf("TRIANGULO RETANGULO\n");
-        }
-        else if(a*a < b*b + c*c){
-            printf("TRIANGULO ACUTANGULO\n");
-            if(b == c){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }
-        else if(a*a > b*b + c*c){
-            printf("TRIANGULO OBTUSANGULO\n");
-            if(b == c){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }
+    if (C > A)
+    {
+        temp = A;
+        A = C;
+        C = temp;
     }
-    else if ((b > a) && (b > c)){
-      if (b >= a + c){
-            printf("NAO FORMA TRIANGULO\n");
-        }
-        else if(b*b == a*a + c*c){
-            printf("TRIANGULO RETANGULO\n");
-        }
-        else if(b*b < a*a + c*c){
-            printf("TRIANGULO ACUTANGULO\n");
-            if(a == c){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }
-        else if(b*b > a*a + c*c){
-            printf("TRIANGULO OBTUSANGULO\n");
-            if(a == c){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }  
+    if (C > B)
+    {
+        temp = B;
+        B = C;
+        C = temp;
     }
-    else if((c > a) && (c > b)){
-        if (c >= b + a){
-            printf("NAO FORMA TRIANGULO\n");
-        }
-        else if(c*c == b*b + a*a){
-            printf("TRIANGULO RETANGULO\n");
-        }
-        else if(c*c < b*b + a*a){
-            printf("TRIANGULO ACUTANGULO\n");
-            if(b == a){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }
-        else if(c*c > b*b + a*a){
-            printf("TRIANGULO OBTUSANGULO\n");
-            if(b == a){
-                printf("TRIANGULO ISOSCELES\n");
-            }
-        }
+
+    // Salva os quadrados
+    A2 = A * A;
+    B2 = B * B;
+    C2 = C * C;
+
+    // Verifica o tipo de triângulo
+    if (A >= B + C)
+    {
+        printf("NAO FORMA TRIANGULO\n");
     }
-    else if ((a == c) && (a > b)){
-        printf("TRIANGULO ACUTANGULO\nTRIANGULO ISOSCELES\n");
+    else if (A2 == B2 + C2)
+    {
+        printf("TRIANGULO RETANGULO\n");
     }
-    else if ((b == c) && (b > a)){
-        printf("TRIANGULO ACUTANGULO\nTRIANGULO ISOSCELES\n");
+    else if (A2 > B2 + C2)
+    {
+        printf("TRIANGULO OBTUSANGULO\n");
     }
-    else if ((a == b) && (a > c)){
-        printf("TRIANGULO ACUTANGULO\nTRIANGULO ISOSCELES\n");
+    else if (A2 < B2 + C2)
+    {
+        printf("TRIANGULO ACUTANGULO\n");
     }
+
+    // Verifica se o triângulo é equilátero ou isósceles
+    if (A == B && B == C)
+    {
+        printf("TRIANGULO EQUILATERO\n");
+    }
+    else if (A == B || B == C || A == C)
+    {
+        printf("TRIANGULO ISOSCELES\n");
+    }
+
     return 0;
 }
