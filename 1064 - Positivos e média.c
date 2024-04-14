@@ -10,10 +10,10 @@ int main(){
         scanf("%f", &nro);
         if (nro > 0){
             total ++;
-            soma += nro
+            soma += nro;
         }
 }
-media = soma / total
+media = soma / total;
 printf("%d valores positivos\n%.1f\n", total, media);
 
 return 0;
