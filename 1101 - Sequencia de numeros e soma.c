@@ -7,7 +7,7 @@ int main(){
 
     scanf("%d %d",&m, &n);
     
-    while((m > 0) && (n > 0)){
+    do{
         if (m > n){
         for(idx = n ; idx <= m ; idx++){
             printf("%d ", idx);
@@ -23,6 +23,7 @@ int main(){
     printf("Sum=%d\n", soma);
     soma = 0;
     scanf("%d %d",&m, &n);
-    }
+    }while ((m > 0) && (n > 0));
+    
     return 0;
 }
