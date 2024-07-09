@@ -6,7 +6,7 @@ void LePonto(float *x0, float *y0, float *x1, float *y1){
 }
 
 //Funcao se verifica se os pontos sao validos
-int Verifica(int x0, int x1){
+int Verifica(float x0, float x1){
     if(x0 == x1){
         return 0;
     }
