@@ -1,9 +1,8 @@
 #include <stdio.h>
-float x0, y0, x1, y1;
 
 //Funcao que le os pontos
-void LePonto(){
-    scanf("%f %f %f %f", &x0, &y0, &x1, &y1);
+void LePonto(float *x0, float *y0, float *x1, float *y1){
+    scanf("%f %f %f %f", x0, y0, x1, y1);
 }
 
 //Funcao se verifica se os pontos sao validos
@@ -15,8 +14,9 @@ int Verifica(int x0, int x1){
 }
 
 int main(){
+    float x0, y0, x1, y1;
 
-    LePonto();
+    LePonto(&x0, &y0, &x1, &y1);
 
     Verifica(x0, x1);
 
