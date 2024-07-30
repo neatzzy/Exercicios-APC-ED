@@ -13,10 +13,10 @@ int main(){
 void preencheMatriz(int q){
     for(int i = 0; i < q; i++){
         for(int j = 0; j < q; j++){
-            if(i == j){
-            printf("1");
-            }else if(i > j){
+            if(i + j == q - 1){
             printf("2");
+            }else if(i == j){
+            printf("1");
             }else{
             printf("3");
             }
