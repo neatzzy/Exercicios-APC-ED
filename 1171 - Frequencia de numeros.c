@@ -7,18 +7,36 @@ void LeInput(int q, int vetor[]){
     }
 }
 
-void bubbleSort(int v[], int n){
-    int i, j;
-    for(j = 0; j < n; j++){
-        for(i = 0; i < n-1; i++){
-            if(v[i] > v[i+1]){
-                int aux = v[i];
-                v[i] = v[i+1];
-                v[i+1] = aux;
-            }
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
         }
     }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
 }
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+
 
 void Frequencia(int v[], int q){
     int mem, sequencia = 1, i;
@@ -46,7 +64,7 @@ int main(){
 
     LeInput(qtd, vetor);
 
-    bubbleSort(vetor, qtd);
+    quickSort(vetor, 0, qtd - 1);
 
     Frequencia(vetor, qtd);
 

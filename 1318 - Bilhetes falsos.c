@@ -7,16 +7,32 @@ void LeInput(int v[], int q){
     }
 }
 
-void bubbleSort(int v[], int q){
-    int i, j;
-    for(j = 0; j < q; j++){
-        for(i = 0; i < q-1; i++){
-            if(v[i] > v[i+1]){
-                int aux = v[i];
-                v[i] = v[i+1];
-                v[i+1] = aux;
-            }
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
         }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
     }
 }
 
@@ -46,7 +62,7 @@ int main(){
     int v[m];
 
     LeInput(v, m);
-    bubbleSort(v, m);
+    quickSort(v, 0, m - 1);
     printf("%d\n", Verifica(v, m));
     }
 
