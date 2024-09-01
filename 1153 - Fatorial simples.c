@@ -1,21 +1,19 @@
 #include <stdio.h>
 
 int fatorial(int nro){
-    int i;
-    for(i = 1; nro > 1; nro--){
-        i = i * nro;
+    if(nro == 0){
+        return 1;
+    }else{
+        return nro * fatorial(nro - 1);
     }
-    return i;
 }
 
 int main(){
-    int n, resultado;
+    int n;
 
     scanf("%d", &n);
 
-    resultado = fatorial(n);
-
-    printf("%d\n", resultado);
+    printf("%d\n", fatorial(n));
     
     return 0;
 }
