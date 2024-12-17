@@ -1,2 +1,2 @@
-# APC-2024.1-c
-Códigos dos exercícios do Beecrowd em linguagem C
+# Exercícios - APC & ED
+Códigos dos exercícios de programação separados por linguagem e plataforma.
