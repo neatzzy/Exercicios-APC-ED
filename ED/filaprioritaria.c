@@ -6,7 +6,7 @@ typedef struct No{
     int valor;
     char nome[50];
     struct No* proximo;
-}No;
+    }No;
 
 typedef struct Fila{
     No* inicio;
@@ -14,40 +14,41 @@ typedef struct Fila{
     No* fim80;
     No* fim60;
     int tamanho;
-}Fila;
+    }Fila;
 
 char tempNome[24];
 
 Fila* criaFila(){
-    Fila* fila = (Fila*) malloc(sizeof(Fila));
+    Fila* fila = (Fila*)malloc(sizeof(Fila));
     fila->inicio = NULL;
     fila->fim = NULL;
     fila->tamanho = 0;
     return fila;
-}
+    }
 
 void enqueue(Fila* fila, int val){
-    No* novo = (No*) malloc(sizeof(No));
+    No* novo = (No*)malloc(sizeof(No));
     novo->valor = val;
     novo->proximo = NULL;
     strcpy(novo->nome, tempNome);
-    if(fila->inicio == NULL){
+    if (fila->inicio == NULL){
         fila->inicio = novo;
         fila->fim = novo;
-    }else{
+        }
+    else{
         fila->fim->proximo = novo;
         fila->fim = novo;
-    }
+        }
     fila->tamanho++;
-}
+    }
 
 void printFila(Fila* fila){
     No* atual = fila->inicio;
-    while(atual != NULL){
+    while (atual != NULL){
         printf("%s, ", atual->nome);
         atual = atual->proximo;
+        }
     }
-}
 
 int main(){
     Fila* fila = criaFila();
@@ -56,23 +57,25 @@ int main(){
 
     int idade;
 
-    while(1){
+    while (1){
         printf("Digite o nome do usuario: ");
         scanf("%s", tempNome);
-        if(strcmp(tempNome, "fim") == 0){
+        if (strcmp(tempNome, "fim") == 0){
             break;
-        }
+            }
         printf("Digite a idade do usuario: ");
         scanf("%d", &idade);
-        
-        if(idade >= 80){
+
+        if (idade >= 80){
             enqueue(fila80, idade);
-        }else if(idade >= 60){
+            }
+        else if (idade >= 60){
             enqueue(fila60, idade);
-        }else{
+            }
+        else{
             enqueue(fila, idade);
+            }
         }
-    }
 
     fila80->fim->proximo = fila60->inicio;
     fila60->fim->proximo = fila->inicio;
@@ -82,4 +85,4 @@ int main(){
     printf("\n");
 
     return 0;
-}
+    }
