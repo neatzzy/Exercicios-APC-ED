@@ -27,7 +27,7 @@ int index(Lista* lista, int val);
 
 int insert(Lista* lista, int index, int val);
 
-int pop(Lista* lista, int index);
+int pop(Lista* lista);
 
 int popIndex(Lista* lista, int index);
 
