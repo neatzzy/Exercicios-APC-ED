@@ -1,48 +1,26 @@
-int isValid(char* s){
-    Stack* parenteses = createStack();
-    Stack* chaves = createStack();
-    Stack* colchetes = createStack();
+int isValid(char *str){
+    int tam = strlen(str);
+    Pilha* pilha = Stack();
 
-    for(int i = 0 ; s[i] != '\0' ; i++){
-        if(s[i] == '('){
-            push(parenteses, 'a');
-        }
-        else if(s[i] == ')'){
-            if(!isEmpty(parenteses)){
-                pop(parenteses);
-            }
-            else{
+    for(int i = 0 ; i < tam ; i++){
+        if(str[i] == '(' || str[i] == '[' || str[i] == '{'){
+            push(pilha,(int) str[i]);
+        }else if(str[i] == ')' || str[i] == ']' || str[i] == '}'){
+            if(isEmpty(pilha)){
+                free(pilha);
                 return 0;
             }
-        }
-        else if(s[i] == '{'){
-            push(chaves, 'a');
-        }
-        else if(s[i] == '}'){
-            if(!isEmpty(chaves)){
-                pop(chaves);
-            }
-            else{
-                return 0;
-            }
-        }
-        else if(s[i] == '['){
-            push(colchetes, 'a');
-        }
-        else if(s[i] == ']'){
-            if(!isEmpty(colchetes)){
-                pop(colchetes);
-            }
-            else{
+            char c = (char)pop(pilha);
+            if((c == '(' && str[i] != ')') || (c == '[' && str[i] != ']') || (c == '{' && str[i] != '}')){
+                free(pilha);
                 return 0;
             }
         }
     }
-    if(isEmpty(parenteses) && isEmpty(chaves) && isEmpty(colchetes)){
+    if(isEmpty(pilha)){
+        free(pilha);
         return 1;
     }
-    else{
-        return 0;
-    }
+    free(pilha);
+    return 0;
 }
-

@@ -3,11 +3,11 @@
 #include "lista.h"
 
 Lista* criaLista(){
-    Lista* lista = (Lista*) malloc(sizeof(Lista));
+    Lista* lista = (Lista*)malloc(sizeof(Lista));
     lista->inicio = NULL;
     lista->tamanho = 0;
     return lista;
-}
+    }
 
 void add(Lista* lista, int val){
     No* novo = (No*)malloc(sizeof(No));
@@ -16,7 +16,7 @@ void add(Lista* lista, int val){
     novo->proximo = lista->inicio;
     lista->inicio = novo;
     lista->tamanho++;
-}
+    }
 
 void append(Lista* lista, int val){
     No* novo = (No*)malloc(sizeof(No));
@@ -34,7 +34,7 @@ void append(Lista* lista, int val){
         aux->proximo = novo;
     }
     lista->tamanho++;
-}
+    }
 
 int removeLista(Lista* lista, int val){
     if (isEmpty(lista)) return 0;
@@ -72,7 +72,7 @@ int search(Lista* lista, int val){
         aux = aux->proximo;
     }
     return 0;
-}
+    }
 
 int isEmpty(Lista* lista){
     return lista->tamanho == 0;

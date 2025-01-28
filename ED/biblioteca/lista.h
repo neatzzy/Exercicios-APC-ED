@@ -1,15 +1,15 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-typedef struct{
+typedef struct No{
     int valor;
     struct No* proximo;
-} No;
+    } No;
 
-typedef struct{
+typedef struct Lista{
     No* inicio;
     int tamanho;
-}Lista;
+    }Lista;
 
 Lista* criaLista();
 
@@ -23,7 +23,7 @@ int search(Lista* lista, int val);
 
 int isEmpty(Lista* lista);
 
-int index(Lista* lista, int val);
+int indexLista(Lista* lista, int val);
 
 int insert(Lista* lista, int index, int val);
 

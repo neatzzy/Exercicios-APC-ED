@@ -14,4 +14,4 @@ Profissao* aloca_profissao(unsigned int tamanho_nome){
         }
 
     return p;
-    
+}
