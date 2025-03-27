@@ -12,11 +12,11 @@ Grafo* criaGrafo(int nro_vertices, int grau_max, int eh_ponderado){
         temp->grau = (int*)calloc(nro_vertices, sizeof(int));
         temp->arestas = (int**)calloc(nro_vertices, sizeof(int*));
         for(i = 0; i < nro_vertices; i++){
-            temp->arestas[i] = (int*)calloc(grau_max, sizeof(int));
+            temp->arestas[i] = (int*)malloc(grau_max * sizeof(int));
             if(temp->eh_ponderado){
-                temp->pesos = (float**)calloc(nro_vertices, sizeof(float*));
+                temp->pesos = (float**)malloc(nro_vertices * sizeof(float*));
                 for(i = 0; i < nro_vertices; i++){
-                    temp->pesos[i] = (float*)calloc(grau_max, sizeof(float));
+                    temp->pesos[i] = (float*)malloc(grau_max * sizeof(float));
                 }
             }
         }
