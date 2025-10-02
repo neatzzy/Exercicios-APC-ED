@@ -3,4 +3,7 @@
 *.exe
 *.o
 /output
+.editorconfig
+.vscode/
+.DS_Store/
 

@@ -172,3 +172,15 @@ int popIndex(Lista* lista, int index){
     lista->tamanho--;
     return val;
 }
+
+void liberaLista(Lista* lista){
+    No* aux = lista->inicio;
+    No* temp;
+
+    while(aux != NULL){
+        temp = aux;
+        aux = aux->proximo;
+        free(temp);
+    }
+    free(lista);
+}
